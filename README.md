@@ -1,7 +1,7 @@
 # MD Reader
 An offline MD files reader based on Electron.
 
-Sometimes need all your docs packed, available offline and being readed with stylish tool?
+_Sometimes need all your docs packed, available offline and being readed with stylish tool?_
 
 ![Product screenshot](https://pp.userapi.com/c849228/v849228683/3b2e/KV9n6U1IJxI.jpg)
 
