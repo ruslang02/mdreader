@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Documentation Reader</title>
+	<link rel="stylesheet" href="libraries/material-design-icons-iconfont/material-icons.css">
+	<link rel="stylesheet" href="style.min.css">
+</head>
+<body class="active">
+<section class="card border-0 h-100">
+	<header class="card-header align-items-center p-1 d-flex bg-light flex-nowrap dropdown flex-shrink-0">
+		<button class="btn btn-outline-primary material-icons p-1 mr-2 flex-shrink-0" style="line-height:18px" id="menu"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">subject
+		</button>
+		<div class="card-heading flex-grow-1">Documentation Reader</div>
+		<div class="dropdown-menu" aria-labelledby="menu">
+			<button class="dropdown-item" id="openProject"><i class="material-icons">folder_open</i> Open Project...</button>
+			<div class="dropdown-divider"></div>
+			<button class="dropdown-item" onclick="app.quit()"><i class="material-icons">exit_to_app</i> Exit</button>
+		</div>
+		<div class="card-buttons d-flex align-items-center mr-1">
+			<i class="material-icons spin d-none">refresh</i>
+			<button id="min" onclick="win.minimize()" class="btn p-2"></button>
+			<button id="max" onclick="(win.isMaximized() ? win.restore() : win.maximize())" class="btn p-2 mx-2"></button>
+			<button id="close" onclick="app.quit()" class="btn p-2"></button>
+		</div>
+	</header>
+	<main class="card-body p-0 m-0 flex-grow-1 d-flex flex-nowrap row"
+				style="border-radius: 0 0 .25rem .25rem; overflow: hidden;">
+		<aside
+				class="bg-light dropdown-menu m-0 col-3 col-xl-2 pt-0 d-inline-block position-static border-left-0 border-top-0 border-bottom-0 rounded-0"
+				style="overflow: auto;z-index:0">
+			<div class="p-2 sticky-top border-bottom mb-2" style="background: rgba(248, 249, 250, 0.71)">
+				<input type="search" class="form-control form-control-sm" placeholder="Find an article">
+			</div>
+			<div id="root"></div>
+		</aside>
+		<main class="col p-0">
+			<webview style="height:100%" nodeintegration src="about:blank"></webview>
+		</main>
+	</main>
+</section>
+<script src="index.js"></script>
+</body>
+</html>

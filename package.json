@@ -1,0 +1,26 @@
+{
+  "name": "mdreader",
+  "productName": "MD Reader",
+  "version": "1.0.0",
+  "description": "MD files Electron-based reader.",
+  "main": "app.js",
+  "scripts": {
+	"test": "electron . -d",
+	"start": "electron .",
+	"build": "electron . --compile"
+  },
+  "repository": {
+	"type": "git",
+	"url": "git+https://github.com/ruslang02/mdreader.git"
+  },
+  "author": "ruslang02",
+  "license": "GPL-3.0",
+  "bugs": {
+	"url": "https://github.com/ruslang02/mdreader/issues"
+  },
+  "homepage": "https://github.com/ruslang02/mdreader#readme",
+  "devDependencies": {
+	"bootstrap": "^4.1.1",
+	"sass": "^1.5.1"
+  }
+}

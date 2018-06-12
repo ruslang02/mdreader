@@ -1,0 +1,97 @@
+@import "functions";
+@import "variables";
+$font-size-base: 14px;
+@import "mixins";
+@import "root";
+@import "reboot";
+
+@import "grid";
+@import "forms";
+@import "buttons";
+
+
+@import "dropdown";
+
+@import "card";
+
+@import "utilities";
+
+@keyframes spin {
+	from {transform:rotate(0deg);}
+	to {transform:rotate(360deg);}
+}
+.spin {
+	animation: .5s ease spin;
+}
+html, body {
+	height:100%;
+	position:relative;
+	overflow:hidden;
+}
+body {
+	padding:0.25rem;
+	&.maximized {
+		padding: 0;
+		section.card {
+			border-radius: 0
+		}
+	}
+	background:transparent;
+
+}
+* {
+	outline: none;
+}
+#min {
+	@extend .btn-outline-warning;
+}
+#max {
+	@extend .btn-outline-success;
+}
+#close {
+	@extend .btn-danger;
+}
+body.active section.card {
+	box-shadow: 0 0 0 0.25rem rgba(30, 144, 255, 0.3);
+	.card-heading {
+		color: $gray-900;
+	}
+	#min {
+		@extend .btn-warning;
+	}
+	#max {
+		@extend .btn-success;
+	}
+
+}
+section.card {
+	box-shadow: 0 0 0 0.25rem rgba(0,0,0,0.15);
+	.card-heading {
+		color: $gray-600;
+	}
+	.card-header {
+		-webkit-app-region: drag;
+		button {
+			-webkit-app-region: no-drag;
+		}
+	}
+	main.col iframe {
+		width:100%;
+		height:100%;
+		border:0;
+	}
+}
+.material-icons {
+	font-size: 18px;
+}
+.dropdown .dropdown-item {
+	display: flex;
+	align-items: center;
+	.material-icons {
+		margin-left: -0.5rem;
+		margin-right: .25rem;
+	}
+}
+.dropdown-item:hover {
+	box-shadow: inset 0 0 0 1000px rgba(0,0,0,.05)
+}
