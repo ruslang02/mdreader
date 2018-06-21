@@ -1,23 +1,35 @@
-const {app, BrowserWindow} = require("electron"),
+/*
+ * MD Reader
+ * Created by @ruslang02
+ * https://github.com/ruslang02/mdreader.git
+ * 
+ * In order for transparent windows to work I have made these adjustments:
+ * * Disable acceleration
+ * * Window creation timeout
+ * 
+ * If transparency does not work, create an issue on GitHub
+ */
+
+const {app, BrowserWindow, protocol} = require("electron"),
 		path = require("path"),
 		fs = require("fs");
 
-// const configLoc = path.join(app.getPath("appData"), "mdreader.json");
 const libLoc = path.join(__dirname, "front", "style.scss");
-const nf = () => void 0;
 const isDebug = (process.argv[2] ? ['-d', '--debug', '--open-dev-tools'].indexOf(process.argv[2].trim().toLowerCase()) > -1 : false);
 const needSCSSCompile = (process.argv[2] ? process.argv[2] : "").trim().toLowerCase() === '--compile';
 let mainWindow;
-// let config = {};
 
+app.disableHardwareAcceleration();
 
 function render() {
-	mainWindow = new BrowserWindow({
-		frame: false,
-		transparent: true
-	});
-	mainWindow.loadFile("./front/index.html");
-	if (isDebug) mainWindow.openDevTools();
+  setTimeout(() => {
+		mainWindow = new BrowserWindow({
+			frame: false,
+			transparent: true
+		});
+		mainWindow.loadFile("./front/index.html");
+		if (isDebug) mainWindow.openDevTools();
+  }, 10)
 }
 
 function isModuleInstalled(pkg) {
@@ -47,25 +59,6 @@ function generateCSS(cb) {
 			cb();
 		})
 	})
-}
-
-function loadConfig(cb = init) {
-	fs.readFile(configLoc, "utf-8", (e, out) => {
-		if ((e ? e.code === "ENOENT" : false)) regenerateConfig(cb); else {
-			try {
-				config = JSON.parse(out);
-			} catch (e) {
-				regenerateConfig(loadConfig)
-			}
-			cb();
-		}
-	});
-}
-
-function regenerateConfig(cb = nf) {
-	fs.copyFile("config.json.default", configLoc, (e2) => {
-		if (e2) throw e2; else cb()
-	});
 }
 
 function init() {
