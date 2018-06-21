@@ -1,7 +1,7 @@
 {
   "name": "mdreader",
   "productName": "MD Reader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MD files Electron-based reader.",
   "main": "app.js",
   "scripts": {
